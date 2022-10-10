@@ -1,26 +1,9 @@
 //import React from "react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "components/Appointment/index.js";
-
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  },
-];
+import axios from "axios";
 
 
 const appointments = {
@@ -64,7 +47,13 @@ const appointments = {
 
 
 export default function Application(props) {
-  const [day, setDay] = useState("Monday");
+
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    // you may put the line below, but will have to remove/comment hardcoded appointments variable
+    //appointments: {}
+  });
 
   const appointmentList = Object.values(appointments).map((appointment) => {
     return (
@@ -77,6 +66,12 @@ export default function Application(props) {
 
     )
   });
+  useEffect(() => {
+    axios.get("/api/days").then((response) => {
+      console.log(response);
+      setDays(response.data)
+    })
+  }, [])
 
 
   return (
@@ -90,7 +85,7 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList
-            days={days} value={day} onChange={setDay}
+            days={setState.days} value={setState.day} onChange={.....}
           />
         </nav>
         <img
