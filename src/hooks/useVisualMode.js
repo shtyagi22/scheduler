@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // state:
 // store the history []
@@ -20,7 +20,7 @@ import React, { useState } from "react";
 
 
 
-export function useVisualMode(initialMode){
+export function useVisualMode(initialMode) {
   const [history, setHistory] = useState([initialMode]);
 
   const transition = (newView, replace = false) => {
