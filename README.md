@@ -11,10 +11,8 @@ Install dependencies with `npm install`.
 ```sh
 npm start
 ```
-#### Running api server from scheduler-api folder
-```sh
-npm start 
-```
+####
+
 
 ## Running Jest Test Framework
 
