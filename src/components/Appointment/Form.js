@@ -4,6 +4,7 @@ import InterviewerList from "components/InterviewerList";
 
 
 export default function Form(props) {
+  console.log("interviewer:", props.interviewer);
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
@@ -41,6 +42,7 @@ export default function Form(props) {
             placeholder="Enter Student Name"
             data-testid="student-name-input"
           />
+
         </form>
         <section className="appointment__validation">{error}</section>
         <InterviewerList
